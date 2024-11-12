@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.chrome.options import Options
+# from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.edge.options import Options
 import getpass
 
 username = input("Please provide your github user name? ")
@@ -41,7 +42,8 @@ try:
     print("\nThis is your private repository list")
     for repo in repos.find_elements("css selector", "li.private"):
         print(repo.find_element("css selector", "a").get_attribute("href"))
-        
+except Exception as e:
+    print(e)  
 finally:
     edge.quit()
 
